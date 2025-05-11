@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube Video Downloader</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-indigo-500 to-purple-600 min-h-screen flex items-center justify-center p-4">
+
+  <div class="bg-white p-6 rounded-xl shadow-lg max-w-md w-full text-center">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">🎬 YouTube Video Downloader</h1>
+
+    <input type="text" id="videoUrl" placeholder="Paste YouTube video URL here"
+      class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+
+    <button onclick="redirectToDownloader()"
+      class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-lg transition duration-300">
+      Download Now
+    </button>
+
+    <p class="text-xs text-gray-400 mt-4">This tool uses a trusted third-party downloader.</p>
+  </div>
+
+  <script>
+    function redirectToDownloader() {
+      const url = document.getElementById('videoUrl').value.trim();
+
+      if (!url) {
+        alert("Please enter a valid YouTube URL.");
+        return;
+      }
+
+      // Use any trusted service (you can change it later)
+      const finalUrl = `https://www.y2mate.is/youtube/${extractVideoID(url)}`;
+
+      window.open(finalUrl, '_blank');
+    }
+
+    function extractVideoID(url) {
+      const regex = /(?:youtube\.com\/(?:.*v=|v\/|embed\/|shorts\/)|youtu\.be\/)([^&\n?#]+)/;
+      const match = url.match(regex);
+      return match ? match[1] : url; // fallback: treat input as direct ID
+    }
+  </script>
+
+</body>
+</html>
