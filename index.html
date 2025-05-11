@@ -1,13 +1,69 @@
-<script>
-  function redirectToDownloader() {
-    const url = document.getElementById('videoUrl').value.trim();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube Video Downloader</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-900 text-white min-h-screen p-6">
 
-    if (!url.includes("youtube.com") && !url.includes("youtu.be")) {
-      alert("Please enter a valid YouTube URL.");
-      return;
+  <!-- Header -->
+  <div class="max-w-xl mx-auto text-center mb-10">
+    <h1 class="text-3xl font-bold flex items-center justify-center gap-2">
+      <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6z" /><path d="M21.6 7.2s-.2-1.43-.82-2.06c-.78-.84-1.65-.84-2.05-.89C15.42 4 12 4 12 4h-.02s-3.42 0-6.7.25c-.4.05-1.27.05-2.05.89C2.6 5.77 2.4 7.2 2.4 7.2S2.2 8.83 2.2 10.45v.1c0 1.62.2 3.25.2 3.25s.2 1.43.82 2.06c.78.84 1.8.81 2.25.9 1.62.15 6.8.25 6.8.25s3.42 0 6.7-.25c.4-.05 1.27-.05 2.05-.89.62-.63.82-2.06.82-2.06s.2-1.62.2-3.25v-.1c0-1.62-.2-3.25-.2-3.25z" /></svg>
+      YouTube Video Downloader
+    </h1>
+  </div>
+
+  <!-- Form -->
+  <div class="max-w-xl mx-auto bg-zinc-800 rounded-xl p-6 shadow-lg">
+    <label class="block text-lg font-semibold mb-2 text-red-400">🎯 Enter YouTube URL</label>
+    <input type="text" id="videoUrl" placeholder="https://www.youtube.com/watch?v=..."
+      class="w-full p-3 rounded-md bg-zinc-700 border border-zinc-600 text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-red-500" />
+    <button onclick="redirectToDownloader()"
+      class="w-full mt-4 bg-red-600 hover:bg-red-700 transition text-white py-3 rounded-md font-semibold text-lg flex items-center justify-center gap-2">
+      🔍 GET VIDEO INFO
+    </button>
+    <p class="text-xs text-zinc-400 mt-3">Supports YouTube videos, Shorts, and youtu.be links</p>
+  </div>
+
+  <!-- Features -->
+  <div class="max-w-xl mx-auto bg-zinc-800 rounded-xl p-6 shadow-lg mt-10">
+    <h2 class="text-xl font-bold mb-4 text-white flex items-center gap-2">
+      <span class="text-red-500">⭐</span> Features
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+      <div class="flex items-start gap-3">
+        <span class="text-yellow-400 text-xl">⚡</span>
+        <div><strong>Fast Downloads</strong><br/>Download quickly in your preferred quality.</div>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="text-cyan-400 text-xl">🎞️</span>
+        <div><strong>Multiple Formats</strong><br/>Choose video or audio-only download.</div>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="text-green-500 text-xl">🛡️</span>
+        <div><strong>Secure & Private</strong><br/>No personal data stored.</div>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="text-pink-400 text-xl">📱</span>
+        <div><strong>Mobile Friendly</strong><br/>Works perfectly on all devices.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function redirectToDownloader() {
+      const url = document.getElementById('videoUrl').value.trim();
+      if (!url.includes("youtube.com") && !url.includes("youtu.be")) {
+        alert("Please enter a valid YouTube URL.");
+        return;
+      }
+      const finalUrl = `https://www.y2mate.tools/en/youtube-to-mp4?q=${encodeURIComponent(url)}`;
+      window.open(finalUrl, '_blank');
     }
+  </script>
 
-    const finalUrl = `https://www.y2mate.tools/en/youtube-to-mp4?q=${encodeURIComponent(url)}`;
-    window.open(finalUrl, '_blank');
-  }
-</script>
+</body>
+</html>
